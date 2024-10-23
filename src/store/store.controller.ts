@@ -11,7 +11,7 @@ export class StoreController {
   }
 
   @Get(':id')
-  async getStoreById(@Param('id') id: string) {
+  async getStoreById(@Param('id') id: number) {
     return this.storeService.getStoreById(id);
   }
 

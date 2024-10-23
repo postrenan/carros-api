@@ -9,7 +9,7 @@ export class StoreService {
     return this.prisma.factory.findMany(); // Assumindo que 'factory' é a tabela de lojas
   }
 
-  async getStoreById(id: string) {
+  async getStoreById(id: number) {
     return this.prisma.factory.findUnique({
       where: { id },
     });

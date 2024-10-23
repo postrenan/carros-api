@@ -11,7 +11,7 @@ export class CarController {
   }
 
   @Get(':id')
-  async getCarById(@Param('id') id: string) {
+  async getCarById(@Param('id') id: number) {
     return this.carService.getCarById(id);
   }
 
@@ -21,12 +21,12 @@ export class CarController {
   }
 
   @Put(':id')
-  async updateCar(@Param('id') id: string, @Body() updateData: any) {
+  async updateCar(@Param('id') id: number, @Body() updateData: any) {
     return this.carService.updateCar(id, updateData);
   }
 
   @Delete(':id')
-  async deleteCar(@Param('id') id: string) {
+  async deleteCar(@Param('id') id: number) {
     return this.carService.deleteCar(id);
   }
 }
