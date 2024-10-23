@@ -11,7 +11,7 @@ export class CarService {
 
   async getCarById(id: number) {
     return this.prisma.car.findUnique({
-      where: { id },
+      where: { id: Number(id) },
     });
   }
 
@@ -23,14 +23,14 @@ export class CarService {
 
   async updateCar(id: number, updateData: any) {
     return this.prisma.car.update({
-      where: { id },
+      where: {  id: Number(id) },
       data: updateData,
     });
   }
 
   async deleteCar(id: number) {
     return this.prisma.car.delete({
-      where: { id },
+      where: {  id: Number(id) },
     });
   }
 }

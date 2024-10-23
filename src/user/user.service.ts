@@ -11,7 +11,7 @@ export class UserService {
 
   async getUserById(id: number) {
     return this.prisma.user.findUnique({
-      where: { id },
+      where: {  id: Number(id) },
     });
   }
 
