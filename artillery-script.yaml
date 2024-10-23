@@ -1,9 +1,0 @@
-config:
-  target: 'http://localhost:3000'  # Altere para a URL da sua API NestJS
-  phases:
-    - duration: 60  # Teste de 60 segundos
-      arrivalRate: 100  # 100 usuários simultâneos
-scenarios:
-  - flow:
-    - get:
-        url: '/cars'  # Altere para o endpoint que deseja testar

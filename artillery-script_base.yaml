@@ -1,0 +1,21 @@
+config:
+  target: 'http://localhost:3000' # Alterar para o endpoint correto
+  phases:
+    - duration: 300
+      arrivalRate: 10 # Número de requisições por segundo
+      name: "Simulando tráfego de clientes"
+  variables:
+    carId: [1, 2, 3, 4] # IDs existentes de carros
+    userId: [1, 2, 3]   # IDs existentes de usuários
+    brandId: [1, 2]     # IDs existentes de marcas
+    countryId: [1, 2]   # IDs existentes de países
+
+  http:
+    pool: 100 # Número máximo de conexões HTTP simultâneas
+
+scenarios:
+  - flow:
+      - get:
+          url: "/cars/{{ carId }}"
+      - get:
+          url: "/users/{{ userId }}"

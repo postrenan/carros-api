@@ -1,0 +1,38 @@
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 300
+      arrivalRate: 10
+      name: "Simulando 75% Leituras e 25% Escritas"
+  variables:
+    carId: [1, 2, 3, 4]
+    userId: [1, 2, 3]
+    brandId: [1, 2]
+    countryId: [1, 2]
+  http:
+    pool: 100
+
+scenarios:
+  - flow:
+      # 75% Leituras
+      - get:
+          url: "/cars/{{ carId }}"
+      - get:
+          url: "/users/{{ userId }}"
+      - get:
+          url: "/brands/{{ brandId }}"
+      - get:
+          url: "/countries/{{ countryId }}"
+
+      # 25% Escritas
+      - post:
+          url: "/cars"
+          json:
+            make: "Honda"
+            model: "Civic"
+            year: 2021
+            price: 25000
+            mileage: 5000
+            description: "Well-maintained car"
+            ownerId: "{{ userId }}"
+            brandId: "{{ brandId }}"
